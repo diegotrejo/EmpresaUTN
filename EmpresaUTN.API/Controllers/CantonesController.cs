@@ -28,7 +28,7 @@ namespace EmpresaUTN.API.Controllers
           {
               return NotFound();
           }
-            return await _context.Cantones.ToListAsync();
+            return await _context.Cantones.Include(p => p.Provincia).ToListAsync();
         }
 
         // GET: api/Cantones/5
