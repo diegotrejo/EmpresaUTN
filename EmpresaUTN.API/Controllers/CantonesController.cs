@@ -39,7 +39,10 @@ namespace EmpresaUTN.API.Controllers
           {
               return NotFound();
           }
-            var canton = await _context.Cantones.FindAsync(id);
+            var canton = await _context
+                .Cantones
+                .Include(p => p.Provincia)
+                .FirstAsync(p => p.Id == id);
 
             if (canton == null)
             {
